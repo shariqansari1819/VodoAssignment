@@ -15,6 +15,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.shariqansari.vodoassignment.R;
 import com.shariqansari.vodoassignment.pojo.event_bus.EventBusMovieClick;
 import com.shariqansari.vodoassignment.pojo.movies_models.MoviesMainObject;
+import com.shariqansari.vodoassignment.utils.ValidUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -52,7 +53,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesHold
         if (moviesMainObject != null) {
             String headline = moviesMainObject.getHeadline();
             String year = moviesMainObject.getYear();
-            int rating = 0;
+            int rating = 0, duration = 0;
             if (moviesMainObject.getRating() != null)
                 rating = moviesMainObject.getRating();
             String imagePath = "";
@@ -65,7 +66,12 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesHold
             if (year != null) {
                 holder.textViewMovieYear.setText(year);
             }
+            if (moviesMainObject.getDuration() != null) {
+                duration = moviesMainObject.getDuration();
+            }
             holder.textViewRatingCount.setText(String.valueOf(rating));
+            int[] time = ValidUtils.splitToComponentTimes(duration);
+            holder.textViewDurationTime.setText(time[0] + "h " + time[1] + "m " + time[2] + "s");
             Glide.with(context)
                     .load(imagePath)
                     .apply(new RequestOptions().centerCrop())
@@ -74,7 +80,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesHold
                     .into(holder.imageViewThumbnail);
         }
     }
-
 
     @Override
     public int getItemCount() {
@@ -93,6 +98,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesHold
         TextView textViewRatingText;
         @BindView(R.id.textViewRatingMoviesRow)
         TextView textViewRatingCount;
+        @BindView(R.id.textViewDurationTimeMain)
+        TextView textViewDurationTime;
 
         MoviesHolder(@NonNull View itemView) {
             super(itemView);

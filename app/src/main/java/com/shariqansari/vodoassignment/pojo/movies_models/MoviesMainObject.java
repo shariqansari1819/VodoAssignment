@@ -1,11 +1,14 @@
 
 package com.shariqansari.vodoassignment.pojo.movies_models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MoviesMainObject {
+public class MoviesMainObject implements Parcelable {
 
     @SerializedName("skyGoUrl")
     @Expose
@@ -76,6 +79,46 @@ public class MoviesMainObject {
     @SerializedName("quote")
     @Expose
     private String quote;
+
+    protected MoviesMainObject(Parcel in) {
+        skyGoUrl = in.readString();
+        url = in.readString();
+        reviewAuthor = in.readString();
+        id = in.readString();
+        cert = in.readString();
+        headline = in.readString();
+        sum = in.readString();
+        synopsis = in.readString();
+        body = in.readString();
+        skyGoId = in.readString();
+        year = in.readString();
+        if (in.readByte() == 0) {
+            duration = null;
+        } else {
+            duration = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            rating = null;
+        } else {
+            rating = in.readInt();
+        }
+        _class = in.readString();
+        lastUpdated = in.readString();
+        genres = in.createStringArrayList();
+        quote = in.readString();
+    }
+
+    public static final Creator<MoviesMainObject> CREATOR = new Creator<MoviesMainObject>() {
+        @Override
+        public MoviesMainObject createFromParcel(Parcel in) {
+            return new MoviesMainObject(in);
+        }
+
+        @Override
+        public MoviesMainObject[] newArray(int size) {
+            return new MoviesMainObject[size];
+        }
+    };
 
     public String getSkyGoUrl() {
         return skyGoUrl;
@@ -261,4 +304,39 @@ public class MoviesMainObject {
         this.quote = quote;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(skyGoUrl);
+        dest.writeString(url);
+        dest.writeString(reviewAuthor);
+        dest.writeString(id);
+        dest.writeString(cert);
+        dest.writeString(headline);
+        dest.writeString(sum);
+        dest.writeString(synopsis);
+        dest.writeString(body);
+        dest.writeString(skyGoId);
+        dest.writeString(year);
+        if (duration == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(duration);
+        }
+        if (rating == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(rating);
+        }
+        dest.writeString(_class);
+        dest.writeString(lastUpdated);
+        dest.writeStringList(genres);
+        dest.writeString(quote);
+    }
 }

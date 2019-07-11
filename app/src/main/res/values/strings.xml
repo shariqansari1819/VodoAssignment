@@ -8,5 +8,6 @@
     <string name="ratings">Ratings</string>
     <string name="could_not_get_movies">Could not get movies.</string>
     <string name="internet_problem">Connection problem.</string>
+    <string name="duration">Duration</string>
 
 </resources>

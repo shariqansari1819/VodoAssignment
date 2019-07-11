@@ -31,4 +31,16 @@ public class ValidUtils {
         else
             return false;
     }
+
+    public static int[] splitToComponentTimes(int seconds) {
+        int hours = seconds / 3600;
+        int remainder = (int) seconds - hours * 3600;
+        int mins = remainder / 60;
+        remainder = remainder - mins * 60;
+        int secs = remainder;
+
+        int[] ints = {hours, mins, secs};
+        return ints;
+    }
+
 }

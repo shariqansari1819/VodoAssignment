@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -16,6 +17,7 @@ import com.shariqansari.vodoassignment.R;
 import com.shariqansari.vodoassignment.adapters.MoviesAdapter;
 import com.shariqansari.vodoassignment.api.Api;
 import com.shariqansari.vodoassignment.api.ApiClient;
+import com.shariqansari.vodoassignment.endpoints.EndpointKeys;
 import com.shariqansari.vodoassignment.pojo.event_bus.EventBusMovieClick;
 import com.shariqansari.vodoassignment.pojo.movies_models.MoviesMainObject;
 import com.shariqansari.vodoassignment.utils.ValidUtils;
@@ -139,7 +141,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void eventBusMovieClick(EventBusMovieClick eventBusMovieClick) {
-
+        Intent intent = new Intent(this, MovieDetailActivity.class);
+        intent.putExtra(EndpointKeys.MOVIE_OBJECT, moviesMainObjectList.get(eventBusMovieClick.getPosition()));
+        startActivity(intent);
     }
 
     @Override
