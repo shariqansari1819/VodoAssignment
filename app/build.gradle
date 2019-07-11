@@ -55,6 +55,10 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 
+    // add exo player dependency here
+    implementation 'com.google.android.exoplayer:exoplayer:2.7.3'
+    implementation 'org.jsoup:jsoup:1.10.3'
+
     implementation 'com.github.IntruderShanky:Squint:3.0.1'
 
     testImplementation 'junit:junit:4.12'

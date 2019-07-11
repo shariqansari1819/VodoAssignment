@@ -10,4 +10,9 @@
     <string name="internet_problem">Connection problem.</string>
     <string name="duration">Duration</string>
 
+    <!--Movie detail activity strings-->
+    <string name="movie_detail">Movie Detail</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="genre">Genre</string>
+
 </resources>

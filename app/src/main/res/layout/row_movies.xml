@@ -13,7 +13,7 @@
     app:cardElevation="1dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/relativeLayoutChildMoviesRow"
+        android:id="@+id/constraintLayoutChildMoviesRow"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/_5sdp">
@@ -34,7 +34,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/poster_thumbnail"
                 android:scaleType="centerCrop"
-                android:src="@drawable/zootopia_thumbnail" />
+                android:src="@drawable/image_placeholder" />
 
         </androidx.cardview.widget.CardView>
 
@@ -69,7 +69,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:background="@drawable/bottom_shadow"
+            android:background="@drawable/bg_divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textViewTitleMoviesRow"
             app:layout_constraintTop_toBottomOf="@+id/textViewYearMoviesRow" />
@@ -115,7 +115,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageViewRatingIconMoviesRow"
             app:layout_constraintStart_toEndOf="@+id/textViewRatingMoviesRow"
             app:layout_constraintTop_toTopOf="@+id/imageViewRatingIconMoviesRow"
-            app:srcCompat="@drawable/popcorn_icon" />
+            app:srcCompat="@drawable/ic_action_popcorn" />
 
         <TextView
             android:id="@+id/textViewDurationTimeMain"

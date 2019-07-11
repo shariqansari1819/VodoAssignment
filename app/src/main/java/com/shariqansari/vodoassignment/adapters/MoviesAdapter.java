@@ -75,8 +75,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesHold
             Glide.with(context)
                     .load(imagePath)
                     .apply(new RequestOptions().centerCrop())
-                    .apply(new RequestOptions().placeholder(R.drawable.zootopia_thumbnail))
-                    .apply(new RequestOptions().error(R.drawable.zootopia_thumbnail))
+                    .apply(new RequestOptions().placeholder(R.drawable.image_placeholder))
+                    .apply(new RequestOptions().error(R.drawable.image_placeholder))
+                    .thumbnail(0.1f)
                     .into(holder.imageViewThumbnail);
         }
     }
